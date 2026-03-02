@@ -12,5 +12,5 @@ def conectar_db() -> sqlite3.Connection:
     return sqlite3.connect(PATH_DB)
 
 with conectar_db() as conexao:
-    df = pd.read_sql('select * from stg_clientes', con=conexao)
+    df = pd.read_sql('select * from dim_produtos', con=conexao)
     print(df)

@@ -66,7 +66,7 @@ def gerar_mudancas() -> None:
      print('Mudanças aplicadas com sucesso.')
 
 #gerar primeiros CSVs
-gerar_dados_iniciais()
+#gerar_dados_iniciais()
 
 #gerar as mudanças
-#gerar_mudancas()
+gerar_mudancas()
