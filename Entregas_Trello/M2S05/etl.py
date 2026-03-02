@@ -64,10 +64,25 @@ def criar_dimensoes(conexao: sqlite3.Connection) -> None:
     #commitar criacoes para salvar
     conexao.commit()
 
+def carregar_stg(conexao: sqlite3.Connection) -> None:
+    """Ex 3 - ler dados csv e carregar em tabelas staging"""
+
+    #conferencia existencia arquivos
+    if not os.path.exists(PATH_PRODUTOS) or not os.path.exists(PATH_CLIENTES):
+        raise FileNotFoundError('Arquivo CSV não encontrado, gerar os dados primeiro')
+    
+    df_produtos = pd.read_csv(PATH_PRODUTOS)
+    df_clientes = pd.read_csv(PATH_CLIENTES)
+
+    #criar tabelas stg no banco de dados sqlite3
+    df_produtos.to_sql('stg_produtos', conexao, if_exists='replace', index=False)
+    df_clientes.to_sql('stg_clientes', conexao, if_exists='replace',index=False)
+
 
 def executar_etl() -> None:
     with conectar_db() as conexao:
         criar_dimensoes(conexao)
+        carregar_stg(conexao)
 
 
 if __name__ == "__main__":
