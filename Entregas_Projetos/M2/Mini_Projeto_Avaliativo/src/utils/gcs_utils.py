@@ -2,6 +2,7 @@ import os
 from google.cloud import storage
 from google.oauth2 import service_account
 from dotenv import load_dotenv
+import pandas as pd
 
 load_dotenv()
 
@@ -23,18 +24,51 @@ print("BUCKET:", os.getenv("BUCKET_NAME"))
 print("CREDENTIALS:", os.getenv("GOOGLE_APPLICATION_CREDENTIALS"))
 
 
-def upload_file(local_file, destination_blob):
+def upload_file(local_path: str, gcs_path: str) -> None:
+    """
+    Faz upload de um arquivo local para o Google Cloud Storage.
+
+    Args:
+        local_path (str): Caminho do arquivo no ambiente local.
+        gcs_path (str): Caminho de destino no bucket (ex: bronze/arquivo.csv).
+
+    Returns:
+        None
+    """
     bucket = client.bucket(bucket_name)
-    blob = bucket.blob(destination_blob)
+    blob = bucket.blob(gcs_path)
 
-    blob.upload_from_filename(local_file)
+    blob.upload_from_filename(local_path)
 
-    print(f"Upload concluído: {destination_blob}")
+    print(f"Upload concluído: {gcs_path}")
 
-def download_file(blob_name, local_path):
+
+def download_file(gcs_path: str, local_path: str) -> None:
+    """
+    Faz download de um arquivo do Google Cloud Storage para o ambiente local.
+
+    Args:
+        gcs_path (str): Caminho do arquivo no bucket.
+        local_path (str): Caminho de destino no ambiente local.
+
+    Returns:
+        None
+    """
     bucket = client.bucket(bucket_name)
-    blob = bucket.blob(blob_name)
+    blob = bucket.blob(gcs_path)
 
     blob.download_to_filename(local_path)
 
-    print(f"Download concluído: {blob_name}")
+    print(f"Download concluído: {gcs_path}")
+
+def read_csv_from_gcs(gcs_path: str, sep: str = ";", decimal: str = ",") -> pd.DataFrame:
+    """
+    Lê um CSV diretamente do GCS e retorna um DataFrame pandas.
+    """
+    bucket = client.bucket(bucket_name)
+    blob = bucket.blob(gcs_path)
+
+    with blob.open("r") as f:
+        df = pd.read_csv(f, sep=sep)
+
+    return df

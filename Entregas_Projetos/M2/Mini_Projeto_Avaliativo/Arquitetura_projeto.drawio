@@ -1,0 +1,49 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36" version="29.6.4">
+  <diagram name="Página-1" id="TQRiL6S7kmygrsN74Ds8">
+    <mxGraphModel dx="1097" dy="656" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="vhFaSHOKihvY6vd5JVtK-3" edge="1" parent="1" source="vhFaSHOKihvY6vd5JVtK-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fillColor=#fad7ac;strokeColor=light-dark(#B46504,#C9C9C9);" target="vhFaSHOKihvY6vd5JVtK-2" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vhFaSHOKihvY6vd5JVtK-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="CSV LOCAL&lt;div&gt;iqvia_produtos.csv&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="60" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="vhFaSHOKihvY6vd5JVtK-5" edge="1" parent="1" source="vhFaSHOKihvY6vd5JVtK-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fillColor=#fad7ac;strokeColor=light-dark(#B46504,#C9C9C9);" target="vhFaSHOKihvY6vd5JVtK-4" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vhFaSHOKihvY6vd5JVtK-2" parent="1" style="whiteSpace=wrap;html=1;rounded=0;" value="&lt;br&gt;&lt;span&gt;EXTRACT (Python)&lt;/span&gt;&lt;div&gt;&lt;span&gt;Upload para GCS  &lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="60" y="108" as="geometry" />
+        </mxCell>
+        <mxCell id="vhFaSHOKihvY6vd5JVtK-7" edge="1" parent="1" source="vhFaSHOKihvY6vd5JVtK-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fillColor=#fad7ac;strokeColor=light-dark(#B46504,#C9C9C9);" target="vhFaSHOKihvY6vd5JVtK-6" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vhFaSHOKihvY6vd5JVtK-4" parent="1" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#f8cecc;strokeColor=#b85450;gradientColor=#ea6b66;" value="GCS - BRONZE&lt;div&gt;Dados Brutos (CSV)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="60" y="207" as="geometry" />
+        </mxCell>
+        <mxCell id="vhFaSHOKihvY6vd5JVtK-9" edge="1" parent="1" source="vhFaSHOKihvY6vd5JVtK-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fillColor=#fad7ac;strokeColor=light-dark(#B46504,#C9C9C9);" target="vhFaSHOKihvY6vd5JVtK-8" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vhFaSHOKihvY6vd5JVtK-6" parent="1" style="whiteSpace=wrap;html=1;rounded=0;" value="TRANSFORM (PANDAS)&lt;div&gt;Limpeza, padronização&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="180" x="30" y="305" as="geometry" />
+        </mxCell>
+        <mxCell id="vhFaSHOKihvY6vd5JVtK-11" edge="1" parent="1" source="vhFaSHOKihvY6vd5JVtK-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fillColor=#fad7ac;strokeColor=light-dark(#B46504,#C9C9C9);" target="vhFaSHOKihvY6vd5JVtK-10" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vhFaSHOKihvY6vd5JVtK-8" parent="1" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" value="GCS - SILVER&lt;div&gt;Dados Tratados (parquet)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="190" x="25" y="403" as="geometry" />
+        </mxCell>
+        <mxCell id="vhFaSHOKihvY6vd5JVtK-13" edge="1" parent="1" source="vhFaSHOKihvY6vd5JVtK-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fillColor=#fad7ac;strokeColor=light-dark(#B46504,#C9C9C9);" target="vhFaSHOKihvY6vd5JVtK-12" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vhFaSHOKihvY6vd5JVtK-10" parent="1" style="whiteSpace=wrap;html=1;rounded=0;" value="LOAD (BigQuery)&lt;div&gt;SCD Tipo 2 (Merge)&lt;/div&gt;&lt;div&gt;UPDATE + INSERT&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="60" y="502" as="geometry" />
+        </mxCell>
+        <mxCell id="vhFaSHOKihvY6vd5JVtK-12" parent="1" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#ffcd28;strokeColor=#d79b00;gradientColor=#ffa500;" value="BIGQUERY - GOLD&lt;div&gt;dim_produto com histórico&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="60" y="600" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

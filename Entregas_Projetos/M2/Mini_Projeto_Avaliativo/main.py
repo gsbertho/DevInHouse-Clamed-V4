@@ -1,60 +1,36 @@
-'''Pipeline para ingestão de dados por SCD2
-
-def extract():
-    pass
-
-def transform():
-    pass
-
-def load():
-    pass
-
-def run_pipeline():
-    extract()
-    transform()
-    load()
-
-if __name__ == "__main__":
-    run_pipeline()
-
-CSV local
-   │
-   ▼
-EXTRACT
-   │
-   ▼
-GCS / bronze
-   │
-   ▼
-TRANSFORM
-(pandas)
-   │
-   ▼
-GCS / silver
-   │
-   ▼
-LOAD
-(SQL MERGE)
-   │
-   ▼
-BigQuery / gold
-
-'''
+"""
+Pipeline para ingestão de dados com SCD2
+"""
 
 from src.pipeline.extract import extract
 from src.pipeline.transform import transform
+from src.pipeline.load import load, simular_alteracoes
 
+from src.utils.bq_utils import (
+    criar_tabela_dim_produto,
+    criar_tabela_stg_produto
+)
 
-def main():
+def main(simular: bool = False):
 
-    print("Iniciando pipeline")
+    print("\n=== INICIANDO PIPELINE ===")
 
+    # 1. extract
     extract()
 
-    transform()
+    # 2. transform
+    df = transform()
 
-    print("Pipeline finalizado")
+    # 3. simulação opcional
+    if simular:
+        print("\n=== APLICANDO SIMULAÇÃO ===")
+        df = simular_alteracoes(df)
+
+    # 4. load
+    load(df)
+
+    print("\n=== PIPELINE FINALIZADO ===")
 
 
 if __name__ == "__main__":
-    main()
+    main(simular=False)
