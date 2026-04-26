@@ -29,4 +29,4 @@ def main(run_bronze_flag: bool = False):
 
 
 if __name__ == "__main__":
-    main(run_bronze_flag=False)
+    main(run_bronze_flag=True)

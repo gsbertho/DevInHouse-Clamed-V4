@@ -386,3 +386,85 @@ GROUP BY 1, 2, 3, 4
 2026-04-26 12:41:50,893 | src.utils.postgres_utils | INFO | Conexão realizada com sucesso
 2026-04-26 12:41:50,943 | src.utils.postgres_utils | INFO | Conexão realizada com sucesso
 2026-04-26 16:00:35,302 | src.utils.postgres_utils | INFO | Conexão realizada com sucesso
+2026-04-26 18:06:06,161 | __main__ | INFO | === Rodando Bronze ===
+2026-04-26 18:06:06,161 | src.pipeline.bronze | INFO | Iniciando pipeline Bronze
+2026-04-26 18:06:06,161 | src.etl.extract | INFO | Iniciando upload de arquivos para o GCS (Bronze)
+2026-04-26 18:06:06,161 | src.etl.extract | INFO | Enviando arquivo: dim_filial.csv
+2026-04-26 18:06:06,161 | src.utils.gcs_utils | INFO | Iniciando upload: data/raw/dim_filial.csv -> bronze/dim_filial.csv
+2026-04-26 18:06:13,929 | src.utils.gcs_utils | INFO | Upload concluído: bronze/dim_filial.csv
+2026-04-26 18:06:13,929 | src.etl.extract | INFO | Enviando arquivo: dim_produto.csv
+2026-04-26 18:06:13,929 | src.utils.gcs_utils | INFO | Iniciando upload: data/raw/dim_produto.csv -> bronze/dim_produto.csv
+2026-04-26 18:06:23,266 | src.utils.gcs_utils | INFO | Upload concluído: bronze/dim_produto.csv
+2026-04-26 18:06:23,266 | src.etl.extract | INFO | Enviando arquivo: fato_vendas.csv
+2026-04-26 18:06:23,266 | src.utils.gcs_utils | INFO | Iniciando upload: data/raw/fato_vendas.csv -> bronze/fato_vendas.csv
+2026-04-26 18:06:24,514 | src.utils.gcs_utils | INFO | Upload concluído: bronze/fato_vendas.csv
+2026-04-26 18:06:24,515 | src.etl.extract | INFO | Upload de arquivos concluído (Bronze)
+2026-04-26 18:06:24,515 | src.pipeline.bronze | INFO | Upload para o GCS concluído
+2026-04-26 18:06:24,515 | src.pipeline.bronze | INFO | Pipeline Bronze finalizado
+2026-04-26 18:06:24,515 | __main__ | INFO | === Rodando Silver ===
+2026-04-26 18:06:24,515 | src.pipeline.silver | INFO | Iniciando pipeline Silver
+2026-04-26 18:06:24,516 | src.etl.extract | INFO | Iniciando leitura dos arquivos do GCS (Bronze)
+2026-04-26 18:06:24,516 | src.utils.gcs_utils | INFO | Lendo arquivo do GCS: bronze/dim_filial.csv
+2026-04-26 18:06:25,224 | src.utils.gcs_utils | INFO | Arquivo carregado com sucesso: bronze/dim_filial.csv
+2026-04-26 18:06:25,224 | src.etl.extract | INFO | Arquivo dim_filial.csv carregado
+2026-04-26 18:06:25,224 | src.utils.gcs_utils | INFO | Lendo arquivo do GCS: bronze/dim_produto.csv
+2026-04-26 18:06:25,727 | src.utils.gcs_utils | INFO | Arquivo carregado com sucesso: bronze/dim_produto.csv
+2026-04-26 18:06:25,728 | src.etl.extract | INFO | Arquivo dim_produto.csv carregado
+2026-04-26 18:06:25,728 | src.utils.gcs_utils | INFO | Lendo arquivo do GCS: bronze/fato_vendas.csv
+2026-04-26 18:08:49,282 | __main__ | INFO | === Rodando Bronze ===
+2026-04-26 18:08:49,282 | src.pipeline.bronze | INFO | Iniciando pipeline Bronze
+2026-04-26 18:08:49,283 | src.etl.extract | INFO | Iniciando upload de arquivos para o GCS (Bronze)
+2026-04-26 18:08:49,283 | src.etl.extract | INFO | Enviando arquivo: dim_filial.csv
+2026-04-26 18:08:49,283 | src.utils.gcs_utils | INFO | Iniciando upload: data/raw/dim_filial.csv -> bronze/dim_filial.csv
+2026-04-26 18:08:50,932 | src.utils.gcs_utils | INFO | Upload concluído: bronze/dim_filial.csv
+2026-04-26 18:08:50,932 | src.etl.extract | INFO | Enviando arquivo: dim_produto.csv
+2026-04-26 18:08:50,932 | src.utils.gcs_utils | INFO | Iniciando upload: data/raw/dim_produto.csv -> bronze/dim_produto.csv
+2026-04-26 18:08:51,392 | src.utils.gcs_utils | INFO | Upload concluído: bronze/dim_produto.csv
+2026-04-26 18:08:51,392 | src.etl.extract | INFO | Enviando arquivo: fato_vendas.csv
+2026-04-26 18:08:51,393 | src.utils.gcs_utils | INFO | Iniciando upload: data/raw/fato_vendas.csv -> bronze/fato_vendas.csv
+2026-04-26 18:08:52,887 | src.utils.gcs_utils | INFO | Upload concluído: bronze/fato_vendas.csv
+2026-04-26 18:08:52,887 | src.etl.extract | INFO | Upload de arquivos concluído (Bronze)
+2026-04-26 18:08:52,887 | src.pipeline.bronze | INFO | Upload para o GCS concluído
+2026-04-26 18:08:52,887 | src.pipeline.bronze | INFO | Pipeline Bronze finalizado
+2026-04-26 18:08:52,887 | __main__ | INFO | === Rodando Silver ===
+2026-04-26 18:08:52,888 | src.pipeline.silver | INFO | Iniciando pipeline Silver
+2026-04-26 18:08:52,888 | src.etl.extract | INFO | Iniciando leitura dos arquivos do GCS (Bronze)
+2026-04-26 18:08:52,888 | src.utils.gcs_utils | INFO | Lendo arquivo do GCS: bronze/dim_filial.csv
+2026-04-26 18:08:53,814 | src.utils.gcs_utils | INFO | Arquivo carregado com sucesso: bronze/dim_filial.csv
+2026-04-26 18:08:53,814 | src.etl.extract | INFO | Arquivo dim_filial.csv carregado
+2026-04-26 18:08:53,814 | src.utils.gcs_utils | INFO | Lendo arquivo do GCS: bronze/dim_produto.csv
+2026-04-26 18:08:54,729 | src.utils.gcs_utils | INFO | Arquivo carregado com sucesso: bronze/dim_produto.csv
+2026-04-26 18:08:54,730 | src.etl.extract | INFO | Arquivo dim_produto.csv carregado
+2026-04-26 18:08:54,730 | src.utils.gcs_utils | INFO | Lendo arquivo do GCS: bronze/fato_vendas.csv
+2026-04-26 18:08:57,113 | src.utils.gcs_utils | INFO | Arquivo carregado com sucesso: bronze/fato_vendas.csv
+2026-04-26 18:08:57,113 | src.etl.extract | INFO | Arquivo fato_vendas.csv carregado
+2026-04-26 18:08:57,113 | src.etl.extract | INFO | Leitura dos arquivos do GCS concluída
+2026-04-26 18:08:57,113 | src.pipeline.silver | INFO | Dados extraídos do GCS
+2026-04-26 18:08:57,113 | src.etl.transform | INFO | Iniciando transformação da camada Silver
+2026-04-26 18:08:57,114 | src.etl.transform | INFO | Iniciando tratamento da tabela fato_vendas
+2026-04-26 18:08:57,134 | src.etl.transform | INFO | Realizando tratamento geral
+2026-04-26 18:08:57,143 | src.etl.transform | INFO | Duplicados removidos (filial): 0
+2026-04-26 18:08:57,143 | src.etl.transform | INFO | Duplicados removidos (produto): 0
+2026-04-26 18:08:57,143 | src.etl.transform | INFO | Duplicados removidos (vendas): 12
+2026-04-26 18:08:57,144 | src.etl.transform | INFO | Aplicando integridade referencial entre dimensões e fato
+2026-04-26 18:08:57,150 | src.etl.transform | INFO | Transformação da camada Silver concluída
+2026-04-26 18:08:57,150 | src.pipeline.silver | INFO | Transformação concluída
+2026-04-26 18:08:57,151 | src.etl.load | INFO | Iniciando carga da camada Silver
+2026-04-26 18:08:57,195 | src.utils.postgres_utils | INFO | Conexão realizada com sucesso
+2026-04-26 18:08:57,196 | src.etl.load | INFO | Executando DDL para criação das tabelas Silver
+2026-04-26 18:08:57,198 | src.etl.load | INFO | Executando TRUNCATE nas tabelas Silver
+2026-04-26 18:08:57,212 | src.etl.load | INFO | Inserindo dados na tabela dim_filial
+2026-04-26 18:08:57,218 | src.etl.load | INFO | Inserindo dados na tabela dim_produto
+2026-04-26 18:08:57,220 | src.etl.load | INFO | Inserindo dados na tabela fato_vendas
+2026-04-26 18:08:58,074 | src.etl.load | INFO | Carga Silver concluída
+2026-04-26 18:08:58,075 | src.pipeline.silver | INFO | Carga no PostgreSQL concluída
+2026-04-26 18:08:58,075 | __main__ | INFO | === Rodando Gold ===
+2026-04-26 18:08:58,075 | src.pipeline.gold | INFO | Iniciando pipeline Gold
+2026-04-26 18:08:58,117 | src.utils.postgres_utils | INFO | Conexão realizada com sucesso
+2026-04-26 18:08:58,126 | src.pipeline.gold | INFO | Camada Gold criada com sucesso
+2026-04-26 18:08:58,126 | __main__ | INFO | === Pipeline finalizado com sucesso ===
+2026-04-26 18:09:26,778 | src.utils.postgres_utils | INFO | Conexão realizada com sucesso
+2026-04-26 18:09:26,865 | src.utils.postgres_utils | INFO | Conexão realizada com sucesso
+2026-04-26 18:09:26,966 | src.utils.postgres_utils | INFO | Conexão realizada com sucesso
+2026-04-26 18:09:27,009 | src.utils.postgres_utils | INFO | Conexão realizada com sucesso
+2026-04-26 18:09:27,055 | src.utils.postgres_utils | INFO | Conexão realizada com sucesso
