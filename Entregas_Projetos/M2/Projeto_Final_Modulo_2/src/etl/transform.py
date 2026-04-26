@@ -1,4 +1,8 @@
 import pandas as pd
+from src.utils.logging_config import setup_logger
+
+# Inicializa logger com o nome do módulo
+logger = setup_logger(__name__)
 
 def transform_to_silver(dfs: dict) -> dict:
     """
@@ -24,6 +28,8 @@ def transform_to_silver(dfs: dict) -> dict:
         dict: DataFrames tratados
     """
 
+    logger.info("Iniciando transformação da camada Silver")
+
     df_filial = dfs["filial"].copy()
     df_produto = dfs["produto"].copy()
     df_vendas = dfs["vendas"].copy()
@@ -31,6 +37,8 @@ def transform_to_silver(dfs: dict) -> dict:
     # =========================
     # TRATAMENTO FATO_VENDAS
     # =========================
+
+    logger.info("Iniciando tratamento da tabela fato_vendas")
 
     # padronização de tipo - converter data
     df_vendas["data"] = pd.to_datetime(df_vendas["data"], errors="coerce")
@@ -70,15 +78,30 @@ def transform_to_silver(dfs: dict) -> dict:
     # TRATAMENTO GERAL
     # =========================
 
+    logger.info("Realizando tratamento geral")
+
     # remoção de duplicatas
     df_filial = df_filial.drop_duplicates()
     df_produto = df_produto.drop_duplicates()
     df_vendas = df_vendas.drop_duplicates()
 
     # exibir duplicatas removidas
-    print("Duplicados removidos (filial):", len(dfs["filial"]) - len(df_filial))
-    print("Duplicados removidos (produto):", len(dfs["produto"]) - len(df_produto))
-    print("Duplicados removidos (vendas):", len(dfs["vendas"]) - len(df_vendas))
+    logger.info(f"Duplicados removidos (filial): {len(dfs['filial']) - len(df_filial)}")
+    logger.info(f"Duplicados removidos (produto): {len(dfs['produto']) - len(df_produto)}")
+    logger.info(f"Duplicados removidos (vendas): {len(dfs['vendas']) - len(df_vendas)}")
+
+    # garantir integridade referencial
+    logger.info("Aplicando integridade referencial entre dimensões e fato")
+
+    df_vendas = df_vendas[
+        df_vendas["filial_id"].isin(df_filial["filial_id"])
+    ]
+
+    df_vendas = df_vendas[
+        df_vendas["produto_id"].isin(df_produto["produto_id"])
+    ]
+
+    logger.info("Transformação da camada Silver concluída")
 
     return {
         "filial": df_filial,

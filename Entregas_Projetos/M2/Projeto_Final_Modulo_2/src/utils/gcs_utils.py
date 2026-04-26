@@ -3,6 +3,10 @@ from google.cloud import storage
 from google.oauth2 import service_account
 from dotenv import load_dotenv
 import pandas as pd
+from src.utils.logging_config import setup_logger
+
+# Inicializa logger com o nome do módulo
+logger = setup_logger(__name__)
 
 load_dotenv()
 
@@ -36,22 +40,28 @@ def upload_file(local_path: str, gcs_path: str) -> None:
     Returns:
         None
     """
+    logger.info(f"Iniciando upload: {local_path} -> {gcs_path}")
+
     bucket = client.bucket(bucket_name)
     blob = bucket.blob(gcs_path)
 
     blob.upload_from_filename(local_path)
 
-    print(f"Upload concluído: {gcs_path}")
+    logger.info(f"Upload concluído: {gcs_path}")
 
 
 def read_csv_from_gcs(gcs_path: str, sep: str = ",", decimal: str = ".") -> pd.DataFrame:
     """
     Lê um CSV diretamente do GCS e retorna um DataFrame pandas.
     """
+    logger.info(f"Lendo arquivo do GCS: {gcs_path}")
+
     bucket = client.bucket(bucket_name)
     blob = bucket.blob(gcs_path)
 
     with blob.open("r") as f:
         df = pd.read_csv(f, sep=sep, decimal=decimal)
+
+    logger.info(f"Arquivo carregado com sucesso: {gcs_path}")
 
     return df
